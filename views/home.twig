@@ -1,50 +1,27 @@
-<!DOCTYPE html>
-<html lang="en"> <!-- ภาษาหลักในเว็บ -->
-<head>
-    <meta charset="UTF-8">
-    <title>CMM19</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.min.css">
-    <link rel="stylesheet" href="/assets/home.css">
-</head>
-<body>
-  <header>
-    <div class="has-text-centered">
-      <img src="/assets/images/logo2.png" alt="" width="145" height="auto">
-    </div>
-      <nav class="navbar-tabs"><!-- navigation bar -->
-        <a href="#" class="navbar-item">work</a> <!--aคือการที่ให้กดตรงitemได้ #ไว้ใส่ลิ้งหน้าที่ต้องการให้ลิ้งไป--> <!-- . คือเข้าถึงclass-->
-        <a href="#" class="navbar-item">work</a>
-        <a href="#" class="navbar-item">work</a>
-        <a href="#" class="navbar-item">work</a>
-        <a href="#" class="navbar-item">work</a>
-        <a href="#" class="navbar-item">work</a>
-        <a href="#" class="navbar-item">work</a>
-        <a href="#" class="navbar-item">work</a>
-      </nav> 
-  </header>
+{% extends 'layout/base.twig' %}
+
+
+ {% block stylesheet %}
+  <link rel="stylesheet" href="/assets/home.css">
+  {% endblock %}
+  {% block content %}
+  
   <main>
       <section class="banner">
         <div class="highlight">
           <div class="columns"><!--คอรั่มที่ใช้ได้ 12คอรั่ม-->
-            <div class="column highlight-item">
-              <h1>สวนตูด</h1>
+            <div class="column highlight-item" style="background-image: url({{ highlight.url }});">
+              <h1>{{ highlight.title }}</h1>
             </div>
           </div>
         </div>
         <div class="tumbnail">
           <div class="columns is-marginless">
-            <div class="column tumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-1.jpg);">
-              เยี่ยม              
+            {% for item in thumbnail %}
+            <div class="column tumbnail-item is-paddingless" style="background-image: url({{ item.url }});">
+              {{ item.title }}              
             </div>
-            <div class="column tumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-2.jpg);">
-              เยี่ยม
-            </div>
-            <div class="column tumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-3.jpg);">
-              เยี่ยม
-            </div>
-            <div class="column tumbnail-item is-paddingless" style="background-image: url(/assets/images/home/banner/thumbnail-4.jpg);">
-              เยี่ยม
-            </div>
+            {% endfor %}
           </div>
         </div>
       </section>
@@ -166,3 +143,4 @@
 </body>
 
 </html>
+{% endblock %}
